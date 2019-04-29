@@ -8,16 +8,19 @@ const addTask = (task) => {
 it('deve adicionar uma nova tarefa na lista', () => {
   cy.visit('http://localhost:3000');
 
-  addTask('yasmin');
-  addTask('dalliany');
-  addTask('kraken');
+  addTask('learn js');
+  addTask('learn cypress');
+  addTask('learn redux')
+  addTask('learn english');
 
   const list = cy.get('[data-testid="my-list"]');
+  list.should('exist');
+
   cy.get('[data-testid="my-list"] > li').then(($list) => {
-    list.should('exist');
-    expect($list).to.have.length(3);
-    expect($list).to.contain('yasmin');
-    expect($list).to.contain('dalliany');
-    expect($list).to.contain('kraken');
+    expect($list).to.have.length(4);
+    expect($list).to.contain('learn js');
+    expect($list).to.contain('learn cypress');
+    expect($list).to.contain('learn redux');
+    expect($list).to.contain('learn english');
   });
 })

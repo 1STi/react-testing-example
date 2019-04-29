@@ -19,7 +19,10 @@ class Todo extends Component {
 
   handleNewTask = () => {
     this.setState({
-      tasks: this.state.tasks.concat(this.state.myTask),
+      tasks: this.state.tasks.concat({
+        text: this.state.myTask,
+        done: false,
+      }),
       myTask: '',
     });
   }
@@ -30,7 +33,7 @@ class Todo extends Component {
         <li
           key={index}
         >
-          {task}
+          {task.text}
         </li>
       )
     })
