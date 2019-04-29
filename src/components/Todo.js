@@ -1,9 +1,11 @@
 // Libs
 import React, { Component } from 'react';
 
+import './todo.css';
+
 class Todo extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       myTask: '',
@@ -24,6 +26,17 @@ class Todo extends Component {
     });
   }
 
+  handleRemoveTask = (task) => {
+    const removeTask = this.state.tasks.filter(tasks => {
+      return tasks !== task;
+    });
+
+    this.setState({
+      tasks: [...removeTask]
+    })
+  }
+
+
   renderTasks = () => {
     return this.state.tasks.map((task, index) => {
       return (
@@ -31,6 +44,13 @@ class Todo extends Component {
           key={index}
         >
           {task}
+          <button
+            className="Todo_btns"
+            onClick={(e)=> this.handleRemoveTask(task)}
+            data-testid='remove-button'
+          >
+          Remove
+          </button>
         </li>
       )
     })
@@ -38,25 +58,29 @@ class Todo extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Todo">
         <h2>My Todo List</h2>
-        <input
-          type='text'
-          value={this.state.myTask}
-          onChange={this.handleChange}
-          data-testid='my-input'
-        />
-        <button
-          onClick={this.handleNewTask}
-          data-testid='my-button'
-        >
-          Add
-        </button>
-        <ul
-          data-testid='my-list'
-        >
-          {this.renderTasks()}
-        </ul>
+        <div>
+          <input
+            type='text'
+            value={this.state.myTask}
+            onChange={this.handleChange}
+            data-testid='my-input'
+          />
+          <button 
+            className="Todo_btns"
+            onClick={this.handleNewTask}
+            data-testid='my-button'
+          >
+            Add
+          </button>
+          <ul 
+            className="Todo_list"
+            data-testid='my-list'
+          >
+            {this.renderTasks()}
+          </ul>
+        </div>
       </div>
     );
   }

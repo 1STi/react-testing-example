@@ -1,0 +1,28 @@
+.Todo{
+  width: 30vw;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid;
+}
+.Todo_list{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  list-style: none;
+}
+li{
+  display: flex;
+  justify-content: center;
+}
+.Todo_btns{
+  width: 60px;
+  height: 20px;
+  background-color: #c7c7c7;
+  border: none;
+  outline: none;
+}
+.Todo_btn:hover{
+  background-color: #e6e5e5;
+}
