@@ -8,10 +8,10 @@ import {
 import thunkMiddleware from 'redux-thunk';
 
 // Reducers
-import Tasks from './modules/tasks-module';
+import updateTask from './modules/click-module';
 
 const reducers = combineReducers({
-  todo: Tasks,
+  TodoList: updateTask,
 });
 
 export default function configureStore(initialState) {
